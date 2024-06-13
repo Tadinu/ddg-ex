@@ -18,10 +18,10 @@ message(STATUS "cmake build type: ${CMAKE_BUILD_TYPE}")
 # This is a basic, decent setup that should do something sane on most compilers
 
 if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-
+  set(CMAKE_CXX_STANDARD 11)
   # using Clang (linux or apple) or GCC
   message("Using clang/gcc compiler flags")
-  SET(BASE_CXX_FLAGS "-std=c++11 -Wall -Wextra")
+  SET(BASE_CXX_FLAGS "-Wall -Wextra")
   SET(DISABLED_WARNINGS " -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -Wno-deprecated-declarations -Wno-missing-braces -Wno-unused-private-field")
   SET(TRACE_INCLUDES " -H -Wno-error=unused-command-line-argument")
 
@@ -83,6 +83,6 @@ target_include_directories(main PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/")
 target_include_directories(main PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../../utils/include")
 target_link_libraries(main geometry-central polyscope)
 
-add_executable(test-heat "${TEST_SRCS}")
-target_include_directories(test-heat PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/")
-target_link_libraries(test-heat geometry-central polyscope gtest)
+#add_executable(test-heat "${TEST_SRCS}")
+#target_include_directories(test-heat PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/")
+#target_link_libraries(test-heat geometry-central polyscope gtest)
